@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+  
+</head>
+<body>
+FBInstant.initializeAsync()
+  .then(function() {        
+     // Start loading game assets here
+  });
+  // Informs the SDK of loading progress
+FBInstant.setLoadingProgress(progress);
+}
+// Once all assets are loaded, tells the SDK 
+// to end loading view and start the game
+FBInstant.startGameAsync()
+  .then(function() {
+    // Retrieving context and player information can only be done
+    // once startGameAsync() resolves
+    var contextId = FBInstant.context.getID();
+    var contextType = FBInstant.context.getType();
+
+    var playerName = FBInstant.player.getName();
+    var playerPic = FBInstant.player.getPhoto();
+    var playerId = FBInstant.player.getID();
+
+    // Once startGameAsync() resolves it also means the loading view has 
+    // been removed and the user can see the game viewport
+
+    game.start();
+  });
+</body>
+</html>
